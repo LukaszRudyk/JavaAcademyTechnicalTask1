@@ -2,7 +2,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
 
 
 
@@ -94,6 +93,11 @@ void countCharactersInInput()
 }
 
 
+
+
+
+
+
 /**
  * creates string with answer for given input phrase and word
  * @return string in way specified in task
@@ -102,6 +106,9 @@ String Answer()
 {
 	countCharactersInInput();
 
+	
+	
+	
 	String answer = new String();
 	double frequency=0;
 	DecimalFormat df = new DecimalFormat("#.##");
@@ -109,9 +116,8 @@ String Answer()
 		
 		frequency = (1.0*me.getValue().size()/this.charactersFoundCount);
 		
-		
-		
 		answer+=("("+me.getValue()+" ,"+me.getKey().length()+")"+ " = "+df.format(frequency) +" (" + me.getValue().size()+ "/" + this.charactersFoundCount + ")" +"\n");
+		
 	}
 	frequency = 1.0*this.charactersFoundCount/this.charactersInPhrase;
 	answer+= ("TOTAL Frequency "+df.format(frequency));

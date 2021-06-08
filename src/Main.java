@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.util.Arrays;
 
 public class Main {
 	 static String s = "I love to work in global logic!";

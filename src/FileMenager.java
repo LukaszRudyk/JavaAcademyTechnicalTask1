@@ -3,17 +3,22 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class FileMenager {
-
-	private String fileName;
-	 File file;
+/** 
+ * class that menages all files
+ */
+	File file;
 	 FileWriter myWriter;
 	FileMenager(String fileName) throws IOException
 	{
-		this.fileName = fileName;
 		this.file = new File(fileName);
 		this.myWriter = new FileWriter(fileName);
 	}
 	
+	
+	/**
+	 * creates file with name given in constructor of class if it doesnt already exists
+	 * @throws IOException
+	 */
 	void createFile() throws IOException 
 	{
 		 if (file.createNewFile()) {
@@ -22,6 +27,11 @@ public class FileMenager {
 		        System.out.println("File already exists.");
 		      }
 		    }
+	
+	/**
+	 * writes given string to file with name given in constructor of class
+	 * @param string
+	 */
 		 
 	void writeToFile(String string)
 	{

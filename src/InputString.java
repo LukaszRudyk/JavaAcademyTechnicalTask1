@@ -1,10 +1,12 @@
 import java.util.Scanner;
 
 public class InputString {
-//asdas
+
 public static String inputPhrase ;
 
-
+/**
+ * read string from user
+ */
 public static Scanner scanner = new Scanner(System.in);
 
 

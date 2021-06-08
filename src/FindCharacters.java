@@ -1,18 +1,23 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 
 
 public class FindCharacters {
 private String inputPhrase;
 private String[] charactersToFind;
-int charactersFoundCount = 1;
+int charactersFoundCount = 0;
 int charactersInPhrase = 0;
 public  HashMap<String,ArrayList> wordsAndChars ;
+/**
+ * 
+ * @param inputPhrase takes phrase that we want to find characters in 
+ * @param charactersToFind array that takes array of characters that we want to find
+ */
+
 
 	public FindCharacters(String inputPhrase,String[] charactersToFind)
 	{
@@ -22,6 +27,10 @@ public  HashMap<String,ArrayList> wordsAndChars ;
 		
 	}
 	
+	
+	/**
+	 * Separates words in inputPhrase and sets them to lower case cause algorithm is case incensitive
+	 */
 	void seperateWords()
 	{
 		
@@ -29,27 +38,43 @@ public  HashMap<String,ArrayList> wordsAndChars ;
 		for(String string : temporary)
 		{
 			
-			//System.out.println(string.toLowerCase());
+			
 			this.wordsAndChars.put(string.toLowerCase(),null);
 		}
 	}
-	
+	/**
+	 * method removes special characters in input phrase The list of special chars are: ( !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~);
+	 */
 void removeSpecialCharacters()
 {
 	this.inputPhrase =this.inputPhrase.replaceAll("[^a-zA-Z0-9]", " ");  
 }
 	
+
+
+/**
+ * method finds characters from charactersToFind and counts total found characters and sorts map with solution
+ * 
+ */
 	void findCharactersInWords()
 	{
 		
 		for (Entry<String, ArrayList> me : this.wordsAndChars.entrySet()) {
-			ArrayList charactersFound = new ArrayList<String>();
+			ArrayList<String> charactersFound = new ArrayList<String>();
 	         for(String character : this.charactersToFind)
 	         {
 	        	if(me.getKey().contains(character))
 	        	{
 	        		charactersFound.add(character);
-	        		this.charactersFoundCount += 1;
+	        		
+	        		for (int i = 0; i < me.getKey().length(); i++) {
+	        		    if (me.getKey().charAt(i) == character.charAt(0)) {
+	        		    	this.charactersFoundCount++;
+	        		    }
+	        		}
+	        		    	
+	        		
+	        		
 	        	
 	        	}
 	        }
@@ -57,15 +82,22 @@ void removeSpecialCharacters()
 	         this.wordsAndChars.put(me.getKey(),charactersFound);
 	         
 	       }
+		
 	}
+	
+	/**
+	 * method counts characters in input  phrase
+	 */
 void countCharactersInInput()
 {
 	this.charactersInPhrase = this.inputPhrase.replace(" ", "").length();
 }
 
 
-
-
+/**
+ * creates string with answer for given input phrase and word
+ * @return string in way specified in task
+ */
 String Answer()
 {
 	countCharactersInInput();
@@ -76,7 +108,7 @@ String Answer()
 	for (Entry<String, ArrayList> me : this.wordsAndChars.entrySet()) {
 		
 		frequency = (1.0*me.getValue().size()/this.charactersFoundCount);
-		//System.out.println(me.getKey().length()+" "+this.charactersFoundCount+" "+d);
+		
 		
 		
 		answer+=("("+me.getValue()+" ,"+me.getKey().length()+")"+ " = "+df.format(frequency) +" (" + me.getValue().size()+ "/" + this.charactersFoundCount + ")" +"\n");

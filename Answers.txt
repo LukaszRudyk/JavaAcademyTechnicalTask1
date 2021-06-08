@@ -1,0 +1,6 @@
+input phrase = kappa keppo kippo kkeppo   charachters = [k, p, o, p]
+([k, p, o, p] ,6) = 0,25 (4/16)
+([k, p, o, p] ,5) = 0,25 (4/16)
+([k, p, o, p] ,5) = 0,25 (4/16)
+([k, p, p] ,5) = 0,19 (3/16)
+TOTAL Frequency 0,76

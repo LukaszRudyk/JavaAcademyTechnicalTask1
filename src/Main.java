@@ -1,17 +1,18 @@
+import java.io.IOException;
 import java.util.Arrays;
 
 public class Main {
 	 static String s = "I love to work in global logic!";
 	 static String[] logic = {"l","o","g","i","c"};
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
-		FindCharacters test1 = new FindCharacters(s, logic);
-		test1.removeSpecialCharacters();
-		test1.seperateWords();
-		System.out.println(test1.wordsAndChars);
-		test1.findCharactersInWords();
-		System.out.println(test1.wordsAndChars +" " +test1.charactersFoundCount );
-		test1.Answer();
+		Answer.answer(s,logic);
+		System.out.println("give me phrase");
+		s=InputString.inputPhrase();
+		System.out.println("give me word");
+		logic =  InputString.inputPhrase().split("");
+		Answer.answer(s,logic);
+		
 		}
 	}
 
